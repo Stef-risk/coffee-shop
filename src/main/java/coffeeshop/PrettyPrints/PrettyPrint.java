@@ -63,13 +63,13 @@ public class PrettyPrint {
         }
 
         //Print the hashMap
-        String bevInfo="";
+        StringBuilder bevInfo= new StringBuilder();
         for(String piece:des.keySet()) {
             if(des.get(piece)==1) {
-                bevInfo+=piece;
-                bevInfo+=",";
+                bevInfo.append(piece);
+                bevInfo.append(",");
             } else {
-                bevInfo=bevInfo+piece+" x "+des.get(piece)+",";
+                bevInfo.append(piece).append(" x ").append(des.get(piece)).append(",");
             }
         }
 

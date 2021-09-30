@@ -1,47 +1,85 @@
 package coffeeshop.database.DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.Serializable;
+import java.util.Date;
 
-public class SalesDAO {
-    //This DAO is used for getting connection of the database
-    private static final String driver="com.mysql.cj.jdbc.Driver";
-    private static final String url="jdbc:mysql://localhost:3306/coffeeshop";
-    private static final String user="root";
-    private static final String pass="elderflower7";
-
-    public Connection connection;
+public class SalesDAO implements Serializable {
+    private int id;
+    private String baseBev;
+    private String condiments;
+    private Date saleTime;
+    private double price;
 
     public SalesDAO() {
-        try {
-            Class.forName(driver);
-            connection= DriverManager.getConnection(url,user,pass);
-
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
+        baseBev="Mocha";
+        condiments="Milk";
+        saleTime=new Date();
+        price=1.99;
     }
 
-    public boolean writeToSales(String base,String condiments,double price) {
+    public SalesDAO(int id, String baseBev, String condiments, Date saleTime, double price) {
+        this.id = id;
+        this.baseBev = baseBev;
+        this.condiments = condiments;
+        this.saleTime = saleTime;
+        this.price = price;
+    }
 
-        boolean res=false;
-        try {
-            PreparedStatement stmt=connection.prepareStatement(
-                    "insert into sales(base_bev,condiments,sale_time,price)" +
-                    " value(?,?,now(),?)");
+    public SalesDAO(String baseBev, String condiments, Date saleTime, double price) {
+        this.baseBev = baseBev;
+        this.condiments = condiments;
+        this.saleTime = saleTime;
+        this.price = price;
+    }
 
-            stmt.setString(1,base);
-            stmt.setString(2,condiments);
-            stmt.setString(3, String.valueOf(price));
-            res=stmt.execute();
+    public int getId() {
+        return id;
+    }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
+    public void setId(int id) {
+        this.id = id;
+    }
 
-            return res;
-        }
+    public String getBaseBev() {
+        return baseBev;
+    }
+
+    public void setBaseBev(String baseBev) {
+        this.baseBev = baseBev;
+    }
+
+    public String getCondiments() {
+        return condiments;
+    }
+
+    public void setCondiments(String condiments) {
+        this.condiments = condiments;
+    }
+
+    public Date getSaleTime() {
+        return saleTime;
+    }
+
+    public void setSaleTime(Date saleTime) {
+        this.saleTime = saleTime;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "\nSalesDAO{" +
+                "id=" + id +
+                ", baseBev='" + baseBev + '\'' +
+                ", condiments='" + condiments + '\'' +
+                ", SaleTime=" + saleTime +
+                ", price=" + price +
+                '}';
     }
 }

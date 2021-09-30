@@ -1,17 +1,17 @@
 package coffeeshop.database.command;
 
-import coffeeshop.database.DAO.SalesDAO;
+import coffeeshop.database.DAO.SalesMySql;
 
 public class DatabaseLoggingCommand implements Command{
 
-    SalesDAO salesDAO;
+    SalesMySql salesMySql;
 
-    public DatabaseLoggingCommand(SalesDAO salesDAO) {
-        this.salesDAO = salesDAO;
+    public DatabaseLoggingCommand(SalesMySql salesMySql) {
+        this.salesMySql = salesMySql;
     }
 
     @Override
     public void execute(String base, String condiments, double price) {
-        salesDAO.writeToSales(base, condiments, price);
+        salesMySql.writeToSales(base, condiments, price);
     }
 }
