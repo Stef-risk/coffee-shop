@@ -5,18 +5,30 @@ import coffeeshop.service.factory.BeverageFactory;
 
 import java.util.LinkedHashMap;
 
+/**
+ * Do the printing work
+ */
 public class PrettyPrint {
 
-    //Use singleton on PrettyPrint here
+    /**
+     * Singleton
+     */
     private static volatile PrettyPrint prettyPrint;
 
-    //I want to use factory pattern here to get all the beverages we can make
+    /**
+     * Get all the available beverages from factory
+     */
     BeverageFactory factory;
 
     private PrettyPrint(BeverageFactory factory) {
         this.factory = factory;
     }
 
+    /**
+     * Lazy instantiation singleton
+     * @param factory
+     * @return prettyPrint
+     */
     public static PrettyPrint getInstance(BeverageFactory factory) {       //give the factory when creating
         if (prettyPrint == null) {
             synchronized (PrettyPrint.class) {
@@ -26,8 +38,10 @@ public class PrettyPrint {
         return prettyPrint;
     }
 
+    /**
+     * Print welcome, menu and instruction
+     */
     public void openingPrint() {
-        //put together welcome, menu and instruction
         printWelcome();
         printMenu();
         printInstruction();
@@ -51,8 +65,11 @@ public class PrettyPrint {
         System.out.println("------You can enter your base beverage and the condiments to make your drink.-------");
     }
 
+    /**
+     * Take the string of the description, put them into a LinkedHashMap and print without duplicates
+     * @param bev
+     */
     public void printBeverage(Beverage bev) {
-        //Take the string of the description, put them into a LinkedHashMap and print without duplicates
         LinkedHashMap<String,Integer> des=new LinkedHashMap<>();
         for(String piece:bev.getDescription().split(",")) {
             if(des.containsKey(piece)) {
@@ -76,6 +93,10 @@ public class PrettyPrint {
         System.out.println(bevInfo.substring(0,bevInfo.length()-1));
     }
 
+    /**
+     * Print out the beverage's cost
+     * @param bev
+     */
     public void printCost(Beverage bev) {
         System.out.printf("Total cost : $%.2f%n",bev.cost());
     }

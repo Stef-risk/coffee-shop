@@ -1,17 +1,12 @@
 package coffeeshop.service.commandpattern.command;
 
-import coffeeshop.dao.SalesMySql;
+import coffeeshop.service.database.WriteSaleService;
 
 public class DatabaseLoggingCommand implements Command{
-
-    SalesMySql salesMySql;
-
-    public DatabaseLoggingCommand(SalesMySql salesMySql) {
-        this.salesMySql = salesMySql;
-    }
+    WriteSaleService writeSaleService;
 
     @Override
     public void execute(String base, String condiments, double price) {
-        salesMySql.writeToSales(base, condiments, price);
+        writeSaleService.writeToDatabase(base, condiments, price);
     }
 }

@@ -12,7 +12,7 @@ public class WriteSaleServiceImpl implements WriteSaleService {
     public void writeToDatabase(String baseBev, String condiments, double price) {
         SqlSession session= MyBatisUtil.getSqlSession();
         SalesDAO salesDAO=new SalesDAO(baseBev,condiments,new Date(),price);
-        session.insert("SaleSpace.insert",salesDAO);
+        session.insert("SaleSpace.insertSale",salesDAO);
         session.commit();
         session.close();
     }

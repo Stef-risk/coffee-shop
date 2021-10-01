@@ -21,16 +21,28 @@ public class FetchSaleServiceImpl implements FetchSaleService {
 
     @Override
     public SalesDAO getSaleRecordById(int id) {
-        return null;
+        SqlSession session=MyBatisUtil.getSqlSession();
+        SalesDAO salesDAO=session.selectOne("SaleSpace.getSaleRecordById");
+        session.commit();
+        session.close();
+        return salesDAO;
     }
 
     @Override
     public double getAllSales() {
-        return 0;
+        SqlSession session=MyBatisUtil.getSqlSession();
+        double sales=session.selectOne("SaleSpace.getSales");
+        session.commit();
+        session.close();
+        return sales;
     }
 
     @Override
     public double getSalesByDate(Date date) {
-        return 0;
+        SqlSession session=MyBatisUtil.getSqlSession();
+        double sales=session.selectOne("SaleSpace.getSalesByDate",date);
+        session.commit();
+        session.close();
+        return sales;
     }
 }

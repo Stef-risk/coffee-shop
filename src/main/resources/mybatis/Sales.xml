@@ -35,7 +35,7 @@
         from sales;
     </select>
 
-    <select id="getSalesByDate" resultMap="result" >
+    <select id="getSalesByDate" resultMap="result" parameterType="Date">
         select sum(price)
         from sales
         where sale_time=1;
