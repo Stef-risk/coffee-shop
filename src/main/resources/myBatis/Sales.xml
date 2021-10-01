@@ -36,4 +36,8 @@
         where sale_id=#{id};
     </update>
 
+    <delete id="deleteById" parameterType="int">
+        delete from sales where sale_id=#{id};
+    </delete>
+
 </mapper>

@@ -1,12 +1,12 @@
 package coffeeshop;
 
-import coffeeshop.PrettyPrints.PrettyPrint;
 import coffeeshop.beverages.Beverage;
-import coffeeshop.database.DAO.SalesMySql;
-import coffeeshop.database.DataRemoteControl;
-import coffeeshop.database.command.DatabaseLoggingCommand;
-import coffeeshop.factory.BeverageFactory;
-import coffeeshop.factory.StefanBeverageFactory;
+import coffeeshop.dao.SalesMySql;
+import coffeeshop.service.factory.BeverageFactory;
+import coffeeshop.service.factory.StefanBeverageFactory;
+import coffeeshop.service.commandpattern.DataRemoteControl;
+import coffeeshop.service.commandpattern.command.DatabaseLoggingCommand;
+import coffeeshop.service.prettyprints.PrettyPrint;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,7 +46,7 @@ public class StefanCoffee {
             prettyPrint.printCost(beverage);
 
             //When an order is made and checked out
-            dao.orderMade(bev,condiments.toString(), beverage.cost());
+            dao.orderMade(bev, condiments.toString(), beverage.cost());
         }
 
         scanner.close();

@@ -1,13 +1,13 @@
-package coffeeshop.PrettyPrints;
+package coffeeshop.service.prettyprints;
 
 import coffeeshop.beverages.Beverage;
-import coffeeshop.factory.BeverageFactory;
+import coffeeshop.service.factory.BeverageFactory;
 
 import java.util.LinkedHashMap;
 
 public class PrettyPrint {
 
-    //Use singleton on prettyprint here
+    //Use singleton on PrettyPrint here
     private static volatile PrettyPrint prettyPrint;
 
     //I want to use factory pattern here to get all the beverages we can make

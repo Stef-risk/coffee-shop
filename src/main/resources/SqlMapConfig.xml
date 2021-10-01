@@ -4,7 +4,7 @@
 <configuration>
 
     <typeAliases>
-        <typeAlias alias="SalesDAO" type="coffeeshop.database.DAO.SalesDAO"/>
+        <typeAlias alias="SalesDAO" type="coffeeshop.dao.SalesDAO"/>
     </typeAliases>
     <environments default = "development">
         <environment id = "development">

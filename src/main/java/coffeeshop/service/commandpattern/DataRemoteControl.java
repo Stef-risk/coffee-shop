@@ -1,7 +1,7 @@
-package coffeeshop.database;
+package coffeeshop.service.commandpattern;
 
-import coffeeshop.database.command.Command;
-import coffeeshop.database.command.NothingCommand;
+import coffeeshop.service.commandpattern.command.Command;
+import coffeeshop.service.commandpattern.command.NothingCommand;
 
 public class DataRemoteControl {
     Command command=new NothingCommand();

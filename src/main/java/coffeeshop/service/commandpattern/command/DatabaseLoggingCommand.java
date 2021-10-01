@@ -1,6 +1,6 @@
-package coffeeshop.database.command;
+package coffeeshop.service.commandpattern.command;
 
-import coffeeshop.database.DAO.SalesMySql;
+import coffeeshop.dao.SalesMySql;
 
 public class DatabaseLoggingCommand implements Command{
 

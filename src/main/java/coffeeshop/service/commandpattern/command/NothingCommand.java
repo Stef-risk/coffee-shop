@@ -1,4 +1,4 @@
-package coffeeshop.database.command;
+package coffeeshop.service.commandpattern.command;
 
 public class NothingCommand implements Command{
     @Override

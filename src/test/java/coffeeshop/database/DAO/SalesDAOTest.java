@@ -1,5 +1,6 @@
 package coffeeshop.database.DAO;
 
+import coffeeshop.dao.SalesDAO;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -48,6 +49,15 @@ public class SalesDAOTest {
 
         SalesDAO salesDAO1=new SalesDAO(4,"Espresso","Milk,Milk",new Date(),2.37);
         int dao=session.update("SaleSpace.update",salesDAO1);
+        session.commit();
+        session.close();
+    }
+
+    @Test
+    public void testMybatisDelete() throws IOException {
+        SqlSession session=getSession();
+
+        session.delete("SaleSpace.deleteById",13);
         session.commit();
         session.close();
     }

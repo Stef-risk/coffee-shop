@@ -1,4 +1,4 @@
-package coffeeshop.database.DAO;
+package coffeeshop.dao;
 
 import java.io.Serializable;
 import java.util.Date;

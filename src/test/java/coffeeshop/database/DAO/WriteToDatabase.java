@@ -1,4 +1,4 @@
-package coffeeshop.database.test;
+package coffeeshop.database.DAO;
 
 import java.sql.*;
 

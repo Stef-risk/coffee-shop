@@ -1,4 +1,4 @@
-package coffeeshop.factory;
+package coffeeshop.service.factory;
 
 import coffeeshop.beverages.Beverage;
 
