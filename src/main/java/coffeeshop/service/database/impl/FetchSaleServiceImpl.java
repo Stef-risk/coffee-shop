@@ -4,10 +4,12 @@ import coffeeshop.dao.SalesDAO;
 import coffeeshop.service.database.FetchSaleService;
 import coffeeshop.service.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class FetchSaleServiceImpl implements FetchSaleService {
 
     @Override

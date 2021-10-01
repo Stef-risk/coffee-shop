@@ -1,9 +1,8 @@
 package coffeeshop;
 
 import coffeeshop.merchandise.beverages.Beverage;
-import coffeeshop.dao.SalesMySql;
 import coffeeshop.service.factory.BeverageFactory;
-import coffeeshop.service.factory.StefanBeverageFactory;
+import coffeeshop.service.factory.impl.StefanBeverageFactory;
 import coffeeshop.service.commandpattern.DataRemoteControl;
 import coffeeshop.service.commandpattern.command.DatabaseLoggingCommand;
 import coffeeshop.service.prettyprints.PrettyPrint;
@@ -19,7 +18,6 @@ public class StefanCoffee {
 
         DataRemoteControl remoteControl = new DataRemoteControl();              //here we set the remote control
         remoteControl.setCommand(new DatabaseLoggingCommand());
-
 
         prettyPrint.openingPrint();     //This will print out welcome,menu and instruction
 
