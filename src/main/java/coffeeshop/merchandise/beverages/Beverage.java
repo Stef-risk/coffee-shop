@@ -1,4 +1,4 @@
-package coffeeshop.beverages;
+package coffeeshop.merchandise.beverages;
 
 public abstract class Beverage {
     String description="Unknown beverage";

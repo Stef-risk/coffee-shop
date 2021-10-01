@@ -1,6 +1,6 @@
 package coffeeshop.service.prettyprints;
 
-import coffeeshop.beverages.Beverage;
+import coffeeshop.merchandise.beverages.Beverage;
 import coffeeshop.service.factory.BeverageFactory;
 
 import java.util.LinkedHashMap;

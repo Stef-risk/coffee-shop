@@ -1,11 +1,11 @@
 package coffeeshop.service.factory;
 
-import coffeeshop.beverages.Beverage;
-import coffeeshop.beverages.Espresso;
-import coffeeshop.beverages.Mocha;
-import coffeeshop.beverages.Water;
-import coffeeshop.decorators.Milk;
-import coffeeshop.decorators.Whip;
+import coffeeshop.merchandise.beverages.Beverage;
+import coffeeshop.merchandise.beverages.Espresso;
+import coffeeshop.merchandise.beverages.Mocha;
+import coffeeshop.merchandise.beverages.Water;
+import coffeeshop.merchandise.decorators.Milk;
+import coffeeshop.merchandise.decorators.Whip;
 
 import java.util.ArrayList;
 import java.util.HashMap;

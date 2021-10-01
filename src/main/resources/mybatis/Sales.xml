@@ -19,15 +19,26 @@
         </selectKey>
     </insert>
 
-    <select id="getAll" resultMap="result">
+    <select id="getAllSaleRecord" resultMap="result">
         select sale_id,base_bev,condiments,sale_time,price
         from sales;
     </select>
 
-    <select id="getById" resultMap="result" parameterType="int" >
+    <select id="getSaleRecordById" resultMap="result" parameterType="int" >
         select sale_id,base_bev,condiments,sale_time,price
         from sales
         where sale_id= #{specificId};
+    </select>
+
+    <select id="getAllSales" resultMap="result" >
+        select sum(price)
+        from sales;
+    </select>
+
+    <select id="getSalesByDate" resultMap="result" >
+        select sum(price)
+        from sales
+        where sale_time=1;
     </select>
 
     <update id="update" parameterType="SalesDAO">

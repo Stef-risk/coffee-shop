@@ -1,6 +1,6 @@
-package coffeeshop.decorators;
+package coffeeshop.merchandise.decorators;
 
-import coffeeshop.beverages.Beverage;
+import coffeeshop.merchandise.beverages.Beverage;
 
 public class Milk extends Condiment {
 

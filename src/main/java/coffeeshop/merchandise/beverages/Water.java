@@ -1,4 +1,4 @@
-package coffeeshop.beverages;
+package coffeeshop.merchandise.beverages;
 
 public class Water extends Beverage{
 

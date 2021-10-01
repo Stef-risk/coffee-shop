@@ -1,6 +1,6 @@
 package coffeeshop;
 
-import coffeeshop.beverages.Beverage;
+import coffeeshop.merchandise.beverages.Beverage;
 import coffeeshop.dao.SalesMySql;
 import coffeeshop.service.factory.BeverageFactory;
 import coffeeshop.service.factory.StefanBeverageFactory;

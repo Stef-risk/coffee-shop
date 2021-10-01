@@ -32,6 +32,12 @@ public class SalesDAO implements Serializable {
         this.price = price;
     }
 
+    public SalesDAO(String baseBev, String condiments, double price) {
+        this.baseBev = baseBev;
+        this.condiments = condiments;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }

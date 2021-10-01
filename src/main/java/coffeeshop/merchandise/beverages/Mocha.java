@@ -1,4 +1,4 @@
-package coffeeshop.beverages;
+package coffeeshop.merchandise.beverages;
 
 public class Mocha extends Beverage{
 

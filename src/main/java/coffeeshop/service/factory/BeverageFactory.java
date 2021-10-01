@@ -1,6 +1,6 @@
 package coffeeshop.service.factory;
 
-import coffeeshop.beverages.Beverage;
+import coffeeshop.merchandise.beverages.Beverage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
