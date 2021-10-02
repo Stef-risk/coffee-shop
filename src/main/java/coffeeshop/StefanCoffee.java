@@ -1,25 +1,32 @@
 package coffeeshop;
 
 import coffeeshop.merchandise.beverages.Beverage;
-import coffeeshop.dao.SalesMySql;
 import coffeeshop.service.factory.BeverageFactory;
-import coffeeshop.service.factory.StefanBeverageFactory;
+import coffeeshop.service.factory.impl.StefanBeverageFactory;
 import coffeeshop.service.commandpattern.DataRemoteControl;
 import coffeeshop.service.commandpattern.command.DatabaseLoggingCommand;
 import coffeeshop.service.prettyprints.PrettyPrint;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+@ComponentScan
 public class StefanCoffee {
     public static void main(String[] args) {
         BeverageFactory factory = new StefanBeverageFactory();          //get the factory and prettyPrintObject
         PrettyPrint prettyPrint = PrettyPrint.getInstance(factory);
 
-        DataRemoteControl remoteControl = new DataRemoteControl();              //here we set the remote control
-        remoteControl.setCommand(new DatabaseLoggingCommand());
+        //Get IOC Container
+        ApplicationContext context=new AnnotationConfigApplicationContext(StefanCoffee.class);
 
+        DataRemoteControl remoteControl = new DataRemoteControl();              //here we set the remote control
+        DatabaseLoggingCommand databaseLoggingCommand=context.getBean(DatabaseLoggingCommand.class);
+        remoteControl.setCommand(databaseLoggingCommand);
 
         prettyPrint.openingPrint();     //This will print out welcome,menu and instruction
 
@@ -34,8 +41,7 @@ public class StefanCoffee {
 
             System.out.println("Any condiments:");
             String[] cons = scanner.nextLine().strip().split(" ");      //then get the condiments
-            ArrayList<String> condiments = new ArrayList<>();
-            condiments.addAll(Arrays.asList(cons));
+            ArrayList<String> condiments = new ArrayList<>(Arrays.asList(cons));
 
             beverage = factory.addCondiments(condiments, beverage);
 

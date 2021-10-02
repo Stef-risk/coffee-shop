@@ -1,8 +1,11 @@
 package coffeeshop.dao;
 
+import org.springframework.stereotype.Repository;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Repository
 public class SalesDAO implements Serializable {
     private int id;
     private String baseBev;

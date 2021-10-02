@@ -25,7 +25,7 @@ public class SalesDAOTest {
     @Test
     public void testMybatisInsert() throws IOException {
         SqlSession session = getSession();
-
+        salesDAO.setPrice(3.24);
         int id = session.insert("SaleSpace.insertSale", salesDAO);
         System.out.println("record inserted successfully\nnew sale id:" + id);
         session.commit();
@@ -36,10 +36,10 @@ public class SalesDAOTest {
     public void testMybatisSelect() throws IOException {
         SqlSession session = getSession();
 
-        List<SalesDAO> salesDAOList = session.selectList("SaleSpace.getAll");
+        List<SalesDAO> salesDAOList = session.selectList("SaleSpace.getAllSaleRecord");
         System.out.println(salesDAOList);
 
-        SalesDAO no10DAO = session.selectOne("SaleSpace.getById", 10);
+        SalesDAO no10DAO = session.selectOne("SaleSpace.getSaleRecordById", 10);
         System.out.println(no10DAO);
     }
 

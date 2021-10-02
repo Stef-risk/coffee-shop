@@ -1,4 +1,4 @@
-package coffeeshop.service.factory;
+package coffeeshop.service.factory.impl;
 
 import coffeeshop.merchandise.beverages.Beverage;
 import coffeeshop.merchandise.beverages.Espresso;
@@ -6,6 +6,7 @@ import coffeeshop.merchandise.beverages.Mocha;
 import coffeeshop.merchandise.beverages.Water;
 import coffeeshop.merchandise.decorators.Milk;
 import coffeeshop.merchandise.decorators.Whip;
+import coffeeshop.service.factory.BeverageFactory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
