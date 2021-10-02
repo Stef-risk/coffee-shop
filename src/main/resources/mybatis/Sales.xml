@@ -30,15 +30,15 @@
         where sale_id= #{specificId};
     </select>
 
-    <select id="getAllSales" resultMap="result" >
+    <select id="getAllSales"  resultType="java.lang.Double">
         select sum(price)
         from sales;
     </select>
 
-    <select id="getSalesByDate" resultMap="result" parameterType="Date">
+    <select id="getSalesByDate" resultType="java.lang.Double" parameterType="java.lang.String">
         select sum(price)
         from sales
-        where sale_time=1;
+        where DATE(sale_time) between #{Date} and date_add(#{Date}, interval 1 day);
     </select>
 
     <update id="update" parameterType="SalesDAO">

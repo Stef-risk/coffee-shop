@@ -30,5 +30,5 @@ public interface FetchSaleService {
      * @param date
      * @return
      */
-    double getSalesByDate(Date date);
+    double getSalesByDate(String date);
 }
