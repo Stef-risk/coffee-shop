@@ -39,6 +39,10 @@ public class PrettyPrintSupervision {
      * @param salesDAOList
      */
     public void saleRecordsPrint(List<SalesDAO> salesDAOList) {
+        if(salesDAOList.size()==0) {
+            System.out.println("No sale records today until now.");
+            return;
+        }
         System.out.println("Here are the sale records:");
         System.out.println(salesDAOList);
     }
@@ -47,7 +51,11 @@ public class PrettyPrintSupervision {
      * Print out the sales amount
      * @param sales
      */
-    public void salesPrint(double sales) {
+    public void salesPrint(Double sales) {
+        if(sales==null) {
+            System.out.println("No sale records today until now.");
+            return;
+        }
         System.out.println("Your sales : $"+sales);
     }
 }

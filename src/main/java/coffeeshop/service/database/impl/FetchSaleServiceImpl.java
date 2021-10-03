@@ -6,7 +6,6 @@ import coffeeshop.service.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,7 +30,16 @@ public class FetchSaleServiceImpl implements FetchSaleService {
     }
 
     @Override
-    public double getAllSales() {
+    public List<SalesDAO> getSaleRecordsByDate(String date) {
+        SqlSession session=MyBatisUtil.getSqlSession();
+        List<SalesDAO> salesDAOList=session.selectList("SaleSpace.getSaleRecordsByDate",date);
+        session.commit();
+        session.close();
+        return salesDAOList;
+    }
+
+    @Override
+    public Double getAllSales() {
         SqlSession session=MyBatisUtil.getSqlSession();
         double sales=session.selectOne("SaleSpace.getAllSales");
         session.commit();
@@ -40,9 +48,14 @@ public class FetchSaleServiceImpl implements FetchSaleService {
     }
 
     @Override
-    public double getSalesByDate(String date) {
+    public Double getSalesByDate(String date) {
         SqlSession session=MyBatisUtil.getSqlSession();
-        double sales=session.selectOne("SaleSpace.getSalesByDate",date);
+        Double sales=null;
+        try{
+            sales = session.selectOne("SaleSpace.getSalesByDate",date);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         session.commit();
         session.close();
         return sales;

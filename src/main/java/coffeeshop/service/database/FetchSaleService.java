@@ -2,7 +2,6 @@ package coffeeshop.service.database;
 
 import coffeeshop.dao.SalesDAO;
 
-import java.util.Date;
 import java.util.List;
 
 public interface FetchSaleService {
@@ -20,15 +19,22 @@ public interface FetchSaleService {
     SalesDAO getSaleRecordById(int id);
 
     /**
+     * fetch the sale records of a specific date
+     * @param date
+     * @return
+     */
+    List<SalesDAO> getSaleRecordsByDate(String date);
+
+    /**
      * get total sales of the coffee house
      * @return
      */
-    double getAllSales();
+    Double getAllSales();
 
     /**
      * get the sales of the coffee house on a specific date
      * @param date
      * @return
      */
-    double getSalesByDate(String date);
+    Double getSalesByDate(String date);
 }

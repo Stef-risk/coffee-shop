@@ -88,7 +88,7 @@ public class SalesDAO implements Serializable {
                 ", baseBev='" + baseBev + '\'' +
                 ", condiments='" + condiments + '\'' +
                 ", SaleTime=" + saleTime +
-                ", price=" + price +
+                ", price=$" + price +
                 '}';
     }
 }
