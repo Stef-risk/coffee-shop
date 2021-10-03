@@ -19,7 +19,7 @@
         </selectKey>
     </insert>
 
-    <select id="getAllSaleRecord" resultMap="result">
+    <select id="getAllSaleRecords" resultMap="result">
         select sale_id,base_bev,condiments,sale_time,price
         from sales;
     </select>
