@@ -6,6 +6,7 @@ import coffeeshop.service.util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -33,6 +34,18 @@ public class FetchSaleServiceImpl implements FetchSaleService {
     public List<SalesDAO> getSaleRecordsByDate(String date) {
         SqlSession session=MyBatisUtil.getSqlSession();
         List<SalesDAO> salesDAOList=session.selectList("SaleSpace.getSaleRecordsByDate",date);
+        session.commit();
+        session.close();
+        return salesDAOList;
+    }
+
+    @Override
+    public List<SalesDAO> getSaleRecordsByBevAndDate(String bev, Date date) {
+        SqlSession session=MyBatisUtil.getSqlSession();
+        SalesDAO salesDAO=new SalesDAO();
+        salesDAO.setBaseBev(bev);
+        salesDAO.setSaleTime(date);
+        List<SalesDAO> salesDAOList=session.selectList("SaleSpace.getSaleRecordsByBevAndDate",salesDAO);
         session.commit();
         session.close();
         return salesDAOList;
