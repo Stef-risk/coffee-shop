@@ -31,4 +31,9 @@ public class FetchSaleServiceImplTest {
         Double todaySale= fetchSaleService.getSalesByDate(dateInfo);
         System.out.println(todaySale);
     }
+
+    @Test
+    public void getSaleRecordsByBevAndDate() {
+        System.out.println(fetchSaleService.getSaleRecordsByBevAndDate("Mocha",new Date()));
+    }
 }

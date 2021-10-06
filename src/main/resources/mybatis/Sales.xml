@@ -19,7 +19,7 @@
         </selectKey>
     </insert>
 
-    <select id="getAllSaleRecord" resultMap="result">
+    <select id="getAllSaleRecords" resultMap="result">
         select sale_id,base_bev,condiments,sale_time,price
         from sales;
     </select>
@@ -28,6 +28,19 @@
         select sale_id,base_bev,condiments,sale_time,price
         from sales
         where sale_id= #{specificId};
+    </select>
+
+    <select id="getSaleRecordsByDate" resultMap="result" parameterType="java.lang.String">
+        select sale_id,base_bev,condiments,sale_time,price
+        from sales
+        where DATE(sale_time) between #{Date} and date_add(#{Date}, interval 1 day);
+    </select>
+
+    <select id="getSaleRecordsByBevAndDate" resultMap="result" parameterType="SalesDAO">
+        select sale_id,base_bev,condiments,sale_time,price
+        from sales
+        where DATE(sale_time) between DATE(#{saleTime}) and date_add(#{saleTime}, interval 1 day)
+            and base_bev=#{baseBev};
     </select>
 
     <select id="getAllSales"  resultType="java.lang.Double">

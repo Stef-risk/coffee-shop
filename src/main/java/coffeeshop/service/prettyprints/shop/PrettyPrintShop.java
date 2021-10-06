@@ -1,4 +1,4 @@
-package coffeeshop.service.prettyprints;
+package coffeeshop.service.prettyprints.shop;
 
 import coffeeshop.merchandise.beverages.Beverage;
 import coffeeshop.service.factory.BeverageFactory;
@@ -8,19 +8,19 @@ import java.util.LinkedHashMap;
 /**
  * Do the printing work
  */
-public class PrettyPrint {
+public class PrettyPrintShop {
 
     /**
      * Singleton
      */
-    private static volatile PrettyPrint prettyPrint;
+    private static volatile PrettyPrintShop prettyPrintShop;
 
     /**
      * Get all the available beverages from factory
      */
     BeverageFactory factory;
 
-    private PrettyPrint(BeverageFactory factory) {
+    private PrettyPrintShop(BeverageFactory factory) {
         this.factory = factory;
     }
 
@@ -29,13 +29,13 @@ public class PrettyPrint {
      * @param factory
      * @return prettyPrint
      */
-    public static PrettyPrint getInstance(BeverageFactory factory) {       //give the factory when creating
-        if (prettyPrint == null) {
-            synchronized (PrettyPrint.class) {
-                prettyPrint = new PrettyPrint(factory);
+    public static PrettyPrintShop getInstance(BeverageFactory factory) {       //give the factory when creating
+        if (prettyPrintShop == null) {
+            synchronized (PrettyPrintShop.class) {
+                prettyPrintShop = new PrettyPrintShop(factory);
             }
         }
-        return prettyPrint;
+        return prettyPrintShop;
     }
 
     /**

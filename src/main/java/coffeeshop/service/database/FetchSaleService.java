@@ -20,15 +20,31 @@ public interface FetchSaleService {
     SalesDAO getSaleRecordById(int id);
 
     /**
+     * fetch the sale records of a specific date
+     * @param date
+     * @return
+     */
+    List<SalesDAO> getSaleRecordsByDate(String date);
+
+    /**
+     * fetch the sale records of a specific bev on specific date
+     * @param bev
+     * @param date
+     * @return
+     */
+    List<SalesDAO> getSaleRecordsByBevAndDate(String bev, Date date);
+
+    /**
      * get total sales of the coffee house
      * @return
      */
-    double getAllSales();
+    Double getAllSales();
 
     /**
      * get the sales of the coffee house on a specific date
      * @param date
      * @return
      */
-    double getSalesByDate(String date);
+    Double getSalesByDate(String date);
+
 }

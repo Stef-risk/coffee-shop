@@ -5,11 +5,10 @@ import coffeeshop.service.factory.BeverageFactory;
 import coffeeshop.service.factory.impl.StefanBeverageFactory;
 import coffeeshop.service.commandpattern.DataRemoteControl;
 import coffeeshop.service.commandpattern.command.DatabaseLoggingCommand;
-import coffeeshop.service.prettyprints.PrettyPrint;
+import coffeeshop.service.prettyprints.shop.PrettyPrintShop;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +18,7 @@ import java.util.Scanner;
 public class StefanCoffee {
     public static void main(String[] args) {
         BeverageFactory factory = new StefanBeverageFactory();          //get the factory and prettyPrintObject
-        PrettyPrint prettyPrint = PrettyPrint.getInstance(factory);
+        PrettyPrintShop prettyPrintShop = PrettyPrintShop.getInstance(factory);
 
         //Get IOC Container
         ApplicationContext context=new AnnotationConfigApplicationContext(StefanCoffee.class);
@@ -28,7 +27,7 @@ public class StefanCoffee {
         DatabaseLoggingCommand databaseLoggingCommand=context.getBean(DatabaseLoggingCommand.class);
         remoteControl.setCommand(databaseLoggingCommand);
 
-        prettyPrint.openingPrint();     //This will print out welcome,menu and instruction
+        prettyPrintShop.openingPrint();     //This will print out welcome,menu and instruction
 
         Scanner scanner = new Scanner(System.in);
         while (true) {          //The main function of the order system
@@ -46,8 +45,8 @@ public class StefanCoffee {
             beverage = factory.addCondiments(condiments, beverage);
 
             System.out.println("Here's your order:");       //print cost and the beverage info
-            prettyPrint.printBeverage(beverage);
-            prettyPrint.printCost(beverage);
+            prettyPrintShop.printBeverage(beverage);
+            prettyPrintShop.printCost(beverage);
 
             //When an order is made and checked out
             remoteControl.orderMade(bev, condiments.toString(), beverage.cost());

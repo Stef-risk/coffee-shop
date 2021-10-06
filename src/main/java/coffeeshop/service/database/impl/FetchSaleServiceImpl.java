@@ -31,18 +31,44 @@ public class FetchSaleServiceImpl implements FetchSaleService {
     }
 
     @Override
-    public double getAllSales() {
+    public List<SalesDAO> getSaleRecordsByDate(String date) {
         SqlSession session=MyBatisUtil.getSqlSession();
-        double sales=session.selectOne("SaleSpace.getAllSales");
+        List<SalesDAO> salesDAOList=session.selectList("SaleSpace.getSaleRecordsByDate",date);
+        session.commit();
+        session.close();
+        return salesDAOList;
+    }
+
+    @Override
+    public List<SalesDAO> getSaleRecordsByBevAndDate(String bev, Date date) {
+        SqlSession session=MyBatisUtil.getSqlSession();
+        SalesDAO salesDAO=new SalesDAO();
+        salesDAO.setBaseBev(bev);
+        salesDAO.setSaleTime(date);
+        List<SalesDAO> salesDAOList=session.selectList("SaleSpace.getSaleRecordsByBevAndDate",salesDAO);
+        session.commit();
+        session.close();
+        return salesDAOList;
+    }
+
+    @Override
+    public Double getAllSales() {
+        SqlSession session=MyBatisUtil.getSqlSession();
+        Double sales=session.selectOne("SaleSpace.getAllSales");
         session.commit();
         session.close();
         return sales;
     }
 
     @Override
-    public double getSalesByDate(String date) {
+    public Double getSalesByDate(String date) {
         SqlSession session=MyBatisUtil.getSqlSession();
-        double sales=session.selectOne("SaleSpace.getSalesByDate",date);
+        Double sales=null;
+        try{
+            sales = session.selectOne("SaleSpace.getSalesByDate",date);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
         session.commit();
         session.close();
         return sales;
