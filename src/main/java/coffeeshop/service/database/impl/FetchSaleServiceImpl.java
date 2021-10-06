@@ -41,7 +41,7 @@ public class FetchSaleServiceImpl implements FetchSaleService {
     @Override
     public Double getAllSales() {
         SqlSession session=MyBatisUtil.getSqlSession();
-        double sales=session.selectOne("SaleSpace.getAllSales");
+        Double sales=session.selectOne("SaleSpace.getAllSales");
         session.commit();
         session.close();
         return sales;
