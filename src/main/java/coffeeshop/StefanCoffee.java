@@ -34,12 +34,12 @@ public class StefanCoffee {
             System.out.println("May I take your order please:(q to quit)");
             System.out.println("Your base beverage:");
 
-            String bev = scanner.nextLine().strip();
+            String bev = scanner.nextLine().trim();
             if (bev.equals("q")) break;
             Beverage beverage = factory.getBeverage(bev);       //get the base beverage first
 
             System.out.println("Any condiments:");
-            String[] cons = scanner.nextLine().strip().split(" ");      //then get the condiments
+            String[] cons = scanner.nextLine().trim().split(" ");      //then get the condiments
             ArrayList<String> condiments = new ArrayList<>(Arrays.asList(cons));
 
             beverage = factory.addCondiments(condiments, beverage);

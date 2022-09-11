@@ -24,7 +24,7 @@ public class StefanCoffeeSupervision {
         String today=String.format("%tF%n",date);
 
         while (true) {
-            String choice=scanner.nextLine().strip();
+            String choice=scanner.nextLine().trim();
             if(choice.equals("q")) {
                 break;
             }
