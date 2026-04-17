@@ -1,0 +1,33 @@
+{
+  "name": "solidity-smart-contract-starter",
+  "version": "1.0.0",
+  "description": "面向SpringBoot开发者的Solidity智能合约学习项目",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "node": "hardhat node",
+    "deploy:local:storage": "hardhat run scripts/deploy-simple-storage.js --network localhost",
+    "deploy:local:token": "hardhat run scripts/deploy-coffee-token.js --network localhost",
+    "deploy:local:nft": "hardhat run scripts/deploy-coffee-nft.js --network localhost",
+    "deploy:sepolia:token": "hardhat run scripts/deploy-coffee-token.js --network sepolia",
+    "deploy:sepolia:nft": "hardhat run scripts/deploy-coffee-nft.js --network sepolia",
+    "coverage": "hardhat coverage",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "hardhat": "^2.19.0",
+    "hardhat-gas-reporter": "^1.0.9",
+    "solidity-coverage": "^0.8.5",
+    "chai": "^4.3.7",
+    "ethers": "^6.8.0",
+    "dotenv": "^16.3.1"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
+  }
+}

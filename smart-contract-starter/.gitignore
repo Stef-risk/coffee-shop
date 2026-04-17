@@ -1,0 +1,15 @@
+node_modules/
+artifacts/
+cache/
+coverage/
+coverage.json
+gas-report.txt
+typechain-types/
+
+# 敏感信息 - 绝对不能提交！
+.env
+.env.local
+
+# 系统文件
+.DS_Store
+Thumbs.db
